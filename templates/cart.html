@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping cart</title>
+</head>
+<body data-page="cart">
+
+    <button id="save-in">Сохранить в</button>
+
+    <table class="table" style="border-spacing: 10px; background-color: orange;">
+        <caption>Пользователи</caption>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Имя</td>
+                <td>Контакты</td>
+                <td>Возраст</td>
+                <td>В корзину</td>
+            </tr>
+        </thead>
+        <tbody id="table-users">
+        </tbody>
+    </table>
+
+    <table class="table" style="border-spacing: 10px; background-color: yellow;">
+        <caption>Корзина</caption>
+        <thead>
+            <tr>
+                <td>ID</td>
+                <td>Имя</td>
+                <td>Количество</td>
+            </tr>
+        </thead>
+        <tbody id="cart">
+        </tbody>
+    </table>
+
+
+
+    <script src="{{ url_for('static', filename='js/jquery-3.2.1.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/underscore.js') }}" type="text/javascript"></script>
+    <!--<script src="{{ url_for('static', filename='js/my.js') }}" type="text/javascript"></script>-->
+    <script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>
+
+    <script id="table-users-template" type="text/template">
+        <% _.each(users, function(user) { %>
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.contact %></td>
+                <td><%= user.age %></td>
+                <td><button class="js-add-to-cart" data-id="<%= user.id %>" data-name="<%= user.name %>">Добавить</button></td>
+            </tr>
+        <% }); %>
+    </script>
+
+    <script id="cart-template" type="text/template">
+        <% _.each(carts, function(cart) { %>
+            <tr class="js-cart-item">
+                <td><%= cart.id %></td>
+                <td><%= cart.name %></td>
+                <td> <span class="js-change-count" data-id="<%= cart.id %>" data-delta="-1"><b>-</b></span><span class="js-count">  <%- cart.count %>  </span><span class="js-change-count" data-id="<%= cart.id %>" data-delta="1"><b>+</b></span> </td>
+            </tr>
+        <% }); %>
+    </script>
+
+</body>
+</html>

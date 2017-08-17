@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <form action="/users/" method="post">
+        {{ form.csrf_token }}
+        <p>{{ form.name.label }} {{ form.name(required=True) }}</p>
+        <p>{{ form.contact.label }} {{ form.contact(required=True) }}</p>
+        <p>{{ form.age.label }} {{ form.age(required=True) }}</p>
+        <p>{{ form.button }}</p>
+    </form>
+</body>
+</html>

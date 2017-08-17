@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="/house/" method="post">
+        {{ form.hidden_tag() }}
+        <p>{{ form.user.label }} {{ form.user }}</p>
+        <p>{{ form.street.label}} {{ form.street }}</p>
+        <p>{{ form.dom.label }} {{ form.dom }}</p>
+        <p>{{ form.kv.label }} {{ form.kv }}</p>
+        <p>{{ form.button }}</p>
+    </form>
+
+</body>
+</html>
